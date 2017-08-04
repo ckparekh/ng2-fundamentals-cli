@@ -30,7 +30,7 @@ import { Error404Component } from './errors/404.component';
 import { appRoutes } from './routes';
 import { AuthService } from './user/auth.service';
 
-declare let toastr: Toastr;
+export let toastr: Toastr;
 export let jQuery: Object;
 
 @NgModule({
