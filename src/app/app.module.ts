@@ -5,6 +5,8 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from './shared.module'
+
 import { EventsAppComponent }  from './events-app.component';
 import { EventService,
   EventsListComponent,
@@ -29,6 +31,9 @@ import { NavBarComponent } from './nav/navbar.component';
 import { Error404Component } from './errors/404.component';
 import { appRoutes } from './routes';
 import { AuthService } from './user/auth.service';
+import { 
+  PresenterService,
+  PresenterListResolver } from './speakers/index';
 
 export let toastr: Toastr;
 export let jQuery: Object;
@@ -39,6 +44,7 @@ export let jQuery: Object;
       FormsModule,
       HttpModule,
       ReactiveFormsModule,
+      SharedModule,
       RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}) ],
   declarations: [
     EventsAppComponent,
@@ -51,9 +57,7 @@ export let jQuery: Object;
     Error404Component,
     SessionListComponent,
     CollapsibleWellComponent,
-    SimpleModalComponent,
     UpvoteComponent,
-    ModalTriggerDirective,
     LocationValidator,
     DurationPipe ],
   providers: [
@@ -64,6 +68,8 @@ export let jQuery: Object;
     EventListResolver,
     VoterService,
     AuthService,
+    PresenterService,
+    PresenterListResolver,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
